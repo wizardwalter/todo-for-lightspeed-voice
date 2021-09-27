@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>{{todo.title}}</h1>
+  <h2>{{allHours}} Hours</h2>
+  <table>
+    <tr>
+      <th>Task</th>
+      <th>Assigned To</th>
+      <th>Estimated Hours</th>
+
+    </tr>
+    <tr *ngFor="let t of todo.tasks ; let i = index">
+      <td>{{t.title}}</td>
+      <td>{{t.user.username}}</td>
+      <td>{{t.estimatedHours}}</td>
+    </tr>
+  </table>
+</div>

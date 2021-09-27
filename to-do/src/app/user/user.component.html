@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>{{user.username}}'s Project List</h1>
+  <table>
+    <tr>
+      <th>Project</th>
+      <th>Members</th>
+      <th>Estimated Hours</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let u of user.todo">
+      <td>{{u.title}}</td>
+      <td >
+      <ol *ngFor="let subItem of u.users">
+        <li>
+          {{subItem.username}}
+        </li>
+    </ol>
+  </td>
+      <td>{{u.estimatedHours}}</td>
+      <td><button> <a href="/todos/{{u._id}}">view</a></button></td>
+    </tr>
+  </table>
+</div>

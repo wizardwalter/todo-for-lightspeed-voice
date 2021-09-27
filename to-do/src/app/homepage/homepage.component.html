@@ -1,1 +1,5 @@
-<p>homepage works!</p>
+<div class="container">
+  <div  class="row d-flex justify-content-center">
+      <button *ngFor="let user of users" class="btn btn-primary" [routerLink]="['users/',user.username]">{{user.username}}</button>
+  </div>
+</div>

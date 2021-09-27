@@ -1,11 +1,12 @@
 const { json } = require("body-parser");
 const mongoose = require("mongoose");
+const todo = require("../models/todo");
 const User = require("../models/user");
 
 module.exports.createUser = (req, res, next) => {
   const user = new User({
     username: req.body.username,
-    password: req.body.password,
+    todo: [req.body.todo]
   });
   user
     .save()
@@ -24,13 +25,21 @@ module.exports.createUser = (req, res, next) => {
 
 module.exports.getUsers = (req, res, next) =>{
     User.find()
+    .populate('todo')
     .then(users => {
         res.json({users:users})
     });
 };
 
 module.exports.getOneUser = (req,res,next)=>{
-    User.findById(req.params.id)
+    User.findOne({username: req.params.username})
+    .populate({ 
+      path: 'todo',
+      populate: {
+        path: 'users',
+        model: 'user'
+      } 
+   })
     .exec((err,user)=> {
         if(err) {
             res.status(404).json({message: err})

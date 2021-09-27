@@ -5,6 +5,7 @@ const { json } = require("body-parser");
 const cors = require ("cors");
 const userRoute = require('./routes/user');
 const todosRoute = require('./routes/todo');
+const tasksRoute = require('./routes/tasks');
 
 
 var app = express();
@@ -31,6 +32,7 @@ app.use((req,res,next)=>{
 
 app.use('/users', userRoute);
 app.use('/todos', todosRoute);
+app.use('/tasks', tasksRoute)
 
 
 app.listen(3000, ()=> {

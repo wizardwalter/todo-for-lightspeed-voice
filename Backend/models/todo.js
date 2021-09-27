@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 var todoSchema = new mongoose.Schema({
 	title: String,
-    description: String,
-    users: [{ type: Schema.Types.ObjectId, ref: 'user' }]
+    estimatedHours: Number,
+    users: [{ type: Schema.Types.ObjectId, ref: 'user' }],
+    tasks: [{type: Schema.Types.ObjectId, ref: 'tasks'}],
 });
 module.exports = mongoose.model('todo', todoSchema);
